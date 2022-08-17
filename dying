@@ -1,0 +1,3 @@
+import { rcross,pat, rune, cross, show, make_cross, stack_frac, beside_frac, stackn } from "rune";
+
+show( beside_frac (1/3,stackn (2,make_cross(rcross)), make_cross(rcross)));
