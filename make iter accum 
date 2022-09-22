@@ -1,0 +1,106 @@
+// function f(n) {
+//     return n < 3
+//         ? n 
+//         : f(n - 1) + 2f(n - 2) + 3f(n - 3);
+// }
+
+
+
+// 4 -> f(3) + 2*f(2) + 3*f(1)
+//  --> 3*f(2) + 4*f(1) + 3*f(0)
+
+// f(3) -> f(2) + 2*f(1) + 3*f(0)
+
+// 3 vs 4
+
+
+// // f(4) --> 3*0 + 2*1 + 1*2
+// // 0 to 4
+
+// function f(n) {
+//     function helper(a, b, accum) {
+//         return a > b
+//             ? accum 
+//             : helper(a + 3, b, accum + 3*a + 2*(a+1) + 1*(a))
+//     }
+// }
+
+// // Right to Left Unfolding
+// list(a,b,c,d,e)
+// Base Case: null 
+// f(a, f(b, f(c, f(d, f(e, null)))));
+
+// f(1, f(2, f(3, f(4, null))));
+// f(1, f(2, f(3, pair(4, null))));
+// f(1, f(2, pair(4, null)));
+// f(1, pair(2, pair(4, null)));
+// pair(2, pair(4,null));
+
+// function filter(pred, xs) {
+//     return accumulate((x, ys) => pred(x) ? pair(x, ys) : ys, null, xs);
+// }
+
+// display(filter(x => x % 2 === 0, list(1,2,3,4)));
+
+
+f(1, f(2, etc..))
+
+f(1, f(2, etc...))
+
+
+f(4, null)
+f(3, f(4, null))
+
+f: (x, y) => x + y
+accumulate((x, y) => x + y, 0, list(1,2,3,4));
+f(1, f(2, f(3, f(4, 0))));
+
+function add_numbers(op, xs, initial) {
+    function helper(result, rest) {
+        return is_null(rest)
+            ? result 
+            : helper(op(head(xs), result), tail(rest))
+    }
+    
+    
+    return helper(0, xs);
+}
+
+add_numbers((x, y) => x + y, list(1,2,3,4), 0);
+helper(op(1, 0), list(2,3,4))
+helper(op(2, op(1,0), list(3,4)))
+
+op(4, op(3, op(2, op(1,0))))
+
+
+
+(x, ys) => x % 2 === 0 ? pair(x ,ys) : ys
+
+op(head(rest), result)
+
+op(head(rest), op(head(rest_prev), result))
+
+op(head(rest), op(head(rest_2), op(head(rest_prev...))))
+
+
+function fold_left(op, initial,xs) {
+    function helper(result, rest) {
+        return is_null(rest)
+            : result 
+            ? helper(op(head(rest), result), tail(rest));
+        
+    }
+}
+
+function filter(pred, xs) {
+    function helper(pred, xs, init) {
+        return is_null(xs)
+            ? reverse(init)
+            : pred(head(xs))
+            ? helper(pred, tail(xs), pair(head(xs), init))
+            : helper(pred, tail(xs), init);
+    }
+    
+    return helper(pred, xs, null);
+}
+display(filter(x => x % 2 === 0, list(1,2,3,4)));
