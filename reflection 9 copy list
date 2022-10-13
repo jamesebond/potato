@@ -1,0 +1,10 @@
+function m_o_s(A) {
+    let b= []
+    const len=array_length
+   for (let i=0, i<len,i=i+1)
+  {
+      b[i]=A[i] ;
+  }
+    
+    
+}
