@@ -1,0 +1,12 @@
+function make_matrix(x , y) {
+let a = [];
+for ( let i = 0; i < x; i = i + 1) {
+a[ i] = [];
+for ( let j = 0; j < y; j = j + 1) {
+a [i ][ j] = 0;
+}
+}
+return a;
+}
+make_matrix (3 ,4);
+undefined;
