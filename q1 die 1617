@@ -53,13 +53,21 @@ return is_null(helper(xs))
 ////////////////////////////////////////////////////////////
 
 function all_genes(xs) {
-
-return  is_null(head(xs))
-?null :list( find_gene_end(head(find_gene_start(xs))) ,all_genes(head(find_gene_end(xs))));
-
+    const start = find_gene_start(xs);
+    if (is_null(start)){
+        return null;
+    }
+   else{ const end= find_gene_end(head(start)) ;
+   if(is_null(end)){
+       return null;
+   }
+   else {
+       return pair(head(end),all_genes(head(start)));
+   }}
+    
+    
 }
-
-
+ 
 all_genes(list("T", "A", "T", "G", "C", "A", "T", "A", "A", "G", "T", "A", "G", "A",
 "T", "G", "A", "T", "G", "A", "T")); // returns list(list("C", "A"), list("A"))
 
