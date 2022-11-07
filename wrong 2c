@@ -1,0 +1,28 @@
+function multiply_poly(poly1, poly2) {
+    
+    
+    function times (x,y){
+        if(is_null(x)){
+            null;
+        }
+   else{     
+        const coeff1 = head(head(x));
+        const coeff2 = head(head(y));
+        const exp1 = tail(head(x));
+        const exp2 = tail(head(y));
+
+ return pair( pair((coeff1*coeff2), exp1+exp2), times(tail(x),y)) ;
+
+}}
+
+
+function stimes (a,b){
+    return is_null(b)? null :
+   pair( times(a,b), stimes(a,tail(b)) );
+}
+const pt1= times(poly1,poly2);
+const pt2= stimes(poly1,tail(poly2));
+
+return add_poly(pt1,pt2);
+
+}
