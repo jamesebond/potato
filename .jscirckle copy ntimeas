@@ -1,0 +1,17 @@
+function copy(xs){
+    return is_null(xs)? null
+    : pair(head(xs), copy(tail(xs)));
+}
+function tailtimes(ys,n){
+    return n===0? ys:tailtimes(tail(ys),n-1);
+}
+
+
+function circle(ls) {
+let result= copy(ls);
+const len = length(ls);
+set_tail(tailtimes(result,len-1),result);
+    return result;
+}
+
+list_ref(circle(list(1,2,3)), 8);
